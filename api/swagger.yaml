@@ -1,0 +1,120 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a done by gopaddle team"
+  version: "v1"
+  title: "Swagger based application"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    name: "API Support"
+    url: "http://www.swagger.io/support"
+    email: "support@swagger.io"
+  license:
+    name: "apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/v1"
+schemes:
+- "http"
+produces:
+- "application/json"
+paths:
+  /node-js:
+    get:
+      summary: "node-js Type"
+      description: "This endponits for get the specified node-js resource"
+      parameters: []
+      responses:
+        200:
+          description: "An array of node-js"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/node-js"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+    post:
+      summary: "node-js Type"
+      description: "This endponits for create a new node-js resource"
+      parameters: []
+      responses:
+        200:
+          description: "description about created resource of node-js"
+          schema:
+            $ref: "#/definitions/node-js"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+  /node-js/{node-js_id}:
+    get:
+      summary: "node-js Type"
+      description: "This endponits for get the specified node-js resource"
+      parameters:
+      - name: "node-js_id"
+        in: "path"
+        description: "Fetch resource id of the node-js"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "description about created resource of node-js"
+          schema:
+            $ref: "#/definitions/node-js"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+    put:
+      summary: "node-js Type"
+      description: "This endponits for update the specified node-js resource"
+      parameters:
+      - name: "node-js_id"
+        in: "path"
+        description: "Update resource id of the node-js"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "description about updated resource of node-js"
+          schema:
+            $ref: "#/definitions/node-js"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+    delete:
+      summary: "node-js Type"
+      description: "This endponits for delete the specified node-js resource"
+      parameters:
+      - name: "node-js_id"
+        in: "path"
+        description: "Delete resource id of the node-js"
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "Resource deleted"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  node-js:
+    type: "object"
+    properties:
+      node-js_id:
+        type: "string"
+        description: "Data field of node-js_id"
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
